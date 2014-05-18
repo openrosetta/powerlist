@@ -3,8 +3,6 @@
 # Default development database
 devdata.db
 
-# Default data directory
-data/*
 
 # Packages
 *.egg

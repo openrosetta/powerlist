@@ -173,7 +173,13 @@ class RootController(TGController):
 config = AppConfig(minimal=True, root_controller=RootController())
 config.renderers = ['json']
 
-print "Serving on port 8080..."
-httpd = make_server('', 8080, config.make_wsgi_app())
-httpd.serve_forever()
+if __name__ == '__main__':
+    import sys
+    try:
+        port = int(sys.argv[1])
+    except IndexError:
+        port = 8080
+    print "Serving on port %d..." % port
+    httpd = make_server('', port, config.make_wsgi_app())
+    httpd.serve_forever()
 
